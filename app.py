@@ -47,7 +47,6 @@ def validate_response(response):
 
     import pdb
     pdb.set_trace()
-    print('hello')
 
     return validate(oauth_request=oauth_request)
 
@@ -70,8 +69,9 @@ def validate_request(request):
 def get_event(url):
     response = appdirect.get(url=url)
     is_ok = validate_response(response=response)
-    print(is_ok)
-    return '{"success":"true"}'
+    print(response.json())
+
+    return '{"success":"%s"}' % is_ok
 
 
 app = Flask(__name__)
