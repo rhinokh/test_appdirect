@@ -69,8 +69,8 @@ def validate_request(request):
 def get_event(url):
     response = appdirect.get(url=url)
     is_ok = validate_response(response=response)
-
-    return is_ok
+    print(url)
+    return '{"success":"true"}'
 
 
 app = Flask(__name__)
@@ -85,7 +85,7 @@ def create():
     url = request.args['url']
     result = get_event(url=url)
 
-    return str(result)
+    return result
 
 if __name__ == "__main__":
     app.run()
