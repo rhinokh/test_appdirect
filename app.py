@@ -58,9 +58,6 @@ def validate_request(request):
         query_string=request.query_string
     )
 
-    import pdb
-    pdb.set_trace()
-
     oauth_request['oauth_consumer_key'] = request_oauth[0]  # very important
 
     return validate(oauth_request=oauth_request)
@@ -70,9 +67,7 @@ def get_event(url):
     is_ok = validate_response(response=response)
     import pdb
     pdb.set_trace()
-    print('-------------------')
-    print(is_ok)
-    print('-------------------')
+
     print(response.json())
 
     return is_ok
