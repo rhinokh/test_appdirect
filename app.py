@@ -5,6 +5,8 @@ from oauth2 import Request as OauthRequest
 from oauth2 import Server as OauthServer
 from oauth2 import SignatureMethod_HMAC_SHA1
 
+from .request import FlowRequest
+
 request_oauth = ('oneflow-139996', 'LR7tqmp4bvKom3ZG')
 request_oauth_signature_method = SignatureMethod_HMAC_SHA1()
 oauth_server = OauthServer(
@@ -12,6 +14,11 @@ oauth_server = OauthServer(
         request_oauth_signature_method.name: request_oauth_signature_method
     }
 )
+
+appdirect = FlowRequest()
+appdirect.request_return_response_object = True
+appdirect.request_oauth = request_oauth
+appdirect.request_headers = {'accept': 'application/json', 'Content-Type': 'application/json'}
 
 
 def validate(oauth_request):
@@ -58,13 +65,25 @@ def validate_request(request):
 
     return validate(oauth_request=oauth_request)
 
+def get_event(request):
+    pass
+
 
 app = Flask(__name__)
 
 @app.route('/create')
 def create():
-    response = validate_request(request=request)
-    return str(response)
+    is_ok = validate_request(request=request)
+    if not is_ok:
+        print "false"
+        return "false" 
+
+    import pdb
+    pdb.set_trace()
+    
+    url = 'test'
+
+    return "true"
 
 if __name__ == "__main__":
     app.run()
