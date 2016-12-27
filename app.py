@@ -24,8 +24,6 @@ appdirect.request_headers = {'accept': 'application/json', 'Content-Type': 'appl
 def validate(oauth_request):
     oauth_consumer = Consumer(key=request_oauth[0], secret=request_oauth[1])
     try:
-        import pdb
-        pdb.set_trace()
         oauth_server.verify_request(
             request=oauth_request,
             consumer=oauth_consumer,
@@ -42,11 +40,7 @@ def validate_response(response):
         return False
     import pdb
     pdb.set_trace()
-    oauth_request = OauthRequest.from_request(
-        http_method=response.request.method,
-        http_url=response.request.url,
-        headers=response.headers
-    )
+    oauth_request = OauthRequest.from_request(http_method=response.request.method,http_url=response.request.url,headers=response.headers)
 
     return validate(oauth_request=oauth_request)
 
