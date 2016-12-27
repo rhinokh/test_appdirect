@@ -47,6 +47,7 @@ def validate_response(response):
 
     import pdb
     pdb.set_trace()
+    print('hello')
 
     return validate(oauth_request=oauth_request)
 
