@@ -29,7 +29,8 @@ def validate(oauth_request):
             consumer=oauth_consumer,
             token='')
         return True
-    except Exception:
+    except Exception as e:
+        print(e)
         pass
 
     return False
@@ -43,6 +44,9 @@ def validate_response(response):
         http_url=response.request.url,
         headers=response.headers
     )
+
+    import pdb
+    pdb.set_trace()
 
     return validate(oauth_request=oauth_request)
 
@@ -65,10 +69,6 @@ def validate_request(request):
 def get_event(url):
     response = appdirect.get(url=url)
     is_ok = validate_response(response=response)
-    import pdb
-    pdb.set_trace()
-
-    print(response.json())
 
     return is_ok
 
