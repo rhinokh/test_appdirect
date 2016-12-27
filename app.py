@@ -65,8 +65,17 @@ def validate_request(request):
 
     return validate(oauth_request=oauth_request)
 
-def get_event(request):
-    pass
+def get_event(url):
+    response = appdirect.get(url=url)
+    is_ok = validate_response(response=response)
+    import pdb
+    pdb.set_trace()
+    print('-------------------')
+    print(is_ok)
+    print('-------------------')
+    print(response.json())
+
+    return is_ok
 
 
 app = Flask(__name__)
@@ -78,12 +87,10 @@ def create():
         print "false"
         return "false" 
 
-    import pdb
-    pdb.set_trace()
-    
-    url = 'test'
+    url = request.args['url']
+    result = get_event(url=url)
 
-    return "true"
+    return str(result)
 
 if __name__ == "__main__":
     app.run()
