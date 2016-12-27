@@ -88,4 +88,5 @@ def create():
     return result
 
 if __name__ == "__main__":
-    app.run()
+    result = get_event(url="https://marketplace.appdirect.com/api/integration/v1/events/1af12007-d13e-4846-9527-1442c06bd9f4")
+    #app.run()
