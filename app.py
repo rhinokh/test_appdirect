@@ -77,16 +77,16 @@ app = Flask(__name__)
 
 @app.route('/create')
 def create():
-    is_ok = validate_request(request=request)
-    if not is_ok:
-        print "false"
-        return "false" 
+    # is_ok = validate_request(request=request)
+    # if not is_ok:
+    #    print "false"
+    #    return "false" 
 
-    url = request.args['url']
+    #url = request.args['url']
+    url = "https://marketplace.appdirect.com/api/integration/v1/events/1af12007-d13e-4846-9527-1442c06bd9f4"
     result = get_event(url=url)
 
     return result
 
 if __name__ == "__main__":
-    result = get_event(url="https://marketplace.appdirect.com/api/integration/v1/events/1af12007-d13e-4846-9527-1442c06bd9f4")
-    #app.run()
+    app.run()
