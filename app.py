@@ -5,7 +5,7 @@ from oauth2 import Request as OauthRequest
 from oauth2 import Server as OauthServer
 from oauth2 import SignatureMethod_HMAC_SHA1
 
-from .request import FlowRequest
+from lib.request import FlowRequest
 
 request_oauth = ('oneflow-139996', 'LR7tqmp4bvKom3ZG')
 request_oauth_signature_method = SignatureMethod_HMAC_SHA1()
