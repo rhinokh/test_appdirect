@@ -70,7 +70,7 @@ def validate_request(request):
 def get_event(url):
     response = appdirect.get(url=url)
     is_ok = validate_response(response=response)
-    print(url)
+    print(is_ok)
     return '{"success":"true"}'
 
 
